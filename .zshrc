@@ -49,9 +49,6 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git brew autojump osx)
 
-# autojump 插件用
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
