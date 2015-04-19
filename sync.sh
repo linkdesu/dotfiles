@@ -10,6 +10,8 @@ dotfiles=(
         .gitconfig
         .gitignore_global
         .pip
+        .vimrc.bundles.local
+        .vimrc.local
     )
 
 for filename in ${dotfiles[@]}; do
