@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ ! -f $PWD/sync.sh ]]; then
+    echo "You must run this command from dotfiles directory , like this : ./sync.sh"
+    exit 1
+fi
+
 os=`uname`
 home_dir=$HOME
 common_config_dir=$PWD/common
