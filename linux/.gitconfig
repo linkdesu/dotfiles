@@ -4,7 +4,7 @@
 [core]
     symlinks = false
     autocrlf = input
-    excludesfile = /Users/xieaolin/.gitignore_global
+    excludesfile = ~/.gitignore_global
     paper = less -r
     quotepath = false
 [push]
@@ -28,8 +28,8 @@
 [mergetool]
     keepBackup = false
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	path =
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true

@@ -40,6 +40,8 @@ ZSH_THEME="bureau"
 
 # ============== User configuration ==============
 
+os=`uname`
+
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.oh-my-zsh-custom
 
@@ -47,7 +49,16 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew autojump osx)
+case $os in
+    "Linux")
+        plugins=(git autojump)
+    ;;
+    "Darwin")
+        plugins=(git brew autojump osx)
+    ;;
+    "Cygwin")
+    ;;
+esac
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -58,24 +69,42 @@ export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 
 # ============== PATH ==============
-# home
-export PATH=$PATH:~/bin
-# composer
-export PATH=$PATH:~/.composer/vendor/bin
-# Homebrew php 5.5
-export PATH="$PATH:$(brew --prefix homebrew/php/php55)/bin"
-# Ruby Gemts
-export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
+case $os in
+    "Linux")
+        plugins=(git autojump)
+    ;;
+    "Darwin")
+        # home
+        export PATH=$PATH:~/bin
+        # composer
+        export PATH=$PATH:~/.composer/vendor/bin
+        # Homebrew php 5.5
+        export PATH="$PATH:$(brew --prefix homebrew/php/php55)/bin"
+        # Ruby Gemts
+        export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
+    ;;
+    "Cygwin")
+    ;;
+esac
+
 
 # ============== OTHER ==============
 
-# Sublime Text
-export EDITOR='subl'
+case $os in
+    "Linux")
+    ;;
+    "Darwin")
+        # Sublime Text
+        export EDITOR='subl'
 
-# Set CLICOLOR if you want Ansi Colors in iTerm2
-export CLICOLOR=1
-# Set colors to match iTerm2 Terminal Colors
-export TERM=xterm-256color
+        # Set CLICOLOR if you want Ansi Colors in iTerm2
+        export CLICOLOR=1
+        # Set colors to match iTerm2 Terminal Colors
+        export TERM=xterm-256color
+    ;;
+    "Cygwin")
+    ;;
+esac
 
 alias grep='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
 alias vi='vim'
