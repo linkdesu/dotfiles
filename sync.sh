@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ ! -f $PWD/sync.sh ]]; then
-    echo "You must run this command from dotfiles directory , like this : ./sync.sh"
+    echo "You must run this command from dotfiles repository directory , like this : cd dotfiles ; ./sync.sh"
     exit 1
 fi
 
@@ -41,15 +41,15 @@ function ln_dotfile() {
     ln -s $source_file $target_file
 }
 
-cd $common_config_dir
-for file in .*; do
+files=$(ls -a $common_config_dir)
+for file in $files; do
     if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
         ln_dotfile $common_config_dir/$file $home_dir/$file
     fi
 done
 
-cd $os_config_dir
-for file in .*; do
+files=$(ls -a $os_config_dir)
+for file in $files; do
     if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
         ln_dotfile $os_config_dir/$file $home_dir/$file
     fi
