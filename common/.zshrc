@@ -69,15 +69,16 @@ export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 
 # ============== PATH ==============
+# home
+export PATH=$PATH:~/bin
+# composer
+export PATH=$PATH:~/.composer/vendor/bin
+
 case $os in
     "Linux")
         plugins=(git autojump)
     ;;
     "Darwin")
-        # home
-        export PATH=$PATH:~/bin
-        # composer
-        export PATH=$PATH:~/.composer/vendor/bin
         # Homebrew php 5.5
         export PATH="$PATH:$(brew --prefix homebrew/php/php55)/bin"
         # Ruby Gemts
