@@ -117,6 +117,7 @@ alias sshxl='sshpass -f "$HOME/Documents/其他/工作资料/passwd" ssh xieaoli
 alias gfwlist2pac='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20000; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias jekyll_on='jekyll serve --watch --drafts'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias php_xdebug="php -d xdebug.profiler_enable=1"
 
 # ============== SUFFIX 2 EDITOR ==============
 
