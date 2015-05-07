@@ -23,7 +23,7 @@ esac
 echo "OS : $os"
 echo "HOME : $home_dir"
 echo "common_config_dir : $common_config_dir"
-echo "os_config_dir : $os_config_dir\n"
+echo "os_config_dir : $os_config_dir"
 
 function ln_dotfile() {
     source_file=$1
@@ -55,4 +55,4 @@ for file in $files; do
     fi
 done
 
-echo "\nDone !"
+echo "Done !"
