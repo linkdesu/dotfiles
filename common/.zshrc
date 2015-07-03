@@ -83,6 +83,8 @@ case $os in
         export PATH="$PATH:$(brew --prefix homebrew/php/php55)/bin"
         # Ruby Gemts
         export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
+        # Go
+        export GOPATH=$HOME/Documents/go
     ;;
     "Cygwin")
     ;;
@@ -102,6 +104,8 @@ case $os in
         export CLICOLOR=1
         # Set colors to match iTerm2 Terminal Colors
         export TERM=xterm-256color
+
+        alias boot2docker_env='eval "$(boot2docker shellinit)"'
     ;;
     "Cygwin")
     ;;
@@ -114,7 +118,8 @@ alias du='du -h'
 
 alias composer='composer -vvv --profile'
 alias sshxl='sshpass -f "$HOME/Documents/其他/工作资料/passwd" ssh xieaolin@essh.sandai.net'
-alias gfwlist2pac='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20000; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
+alias pac_gen='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20000; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
+alias pac_edit='subl "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias ping_linode='ping 106.185.25.247'
 alias jekyll_on='jekyll serve --watch --drafts'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
