@@ -1,7 +1,6 @@
 # Package manager
 bower_components/
 node_modules/
-vendor/
 
 # Editor folders
 .svn/
