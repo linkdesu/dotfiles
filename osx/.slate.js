@@ -65,13 +65,13 @@ alias = {
 };
 
 S.bindAll({
-  'k:ctrl,alt': alias.full,
-  'j:ctrl,alt': alias.lefthalf,
-  ',:ctrl,alt': alias.bottomhalf,
-  'i:ctrl,alt': alias.tophalf,
-  'l:ctrl,alt': alias.righthalf,
-  'n:ctrl,alt': alias.bottomleft,
   'u:ctrl,alt': alias.topleft,
-  '.:ctrl,alt': alias.bottomright,
+  'i:ctrl,alt': alias.tophalf,
   'o:ctrl,alt': alias.topright
+  'j:ctrl,alt': alias.lefthalf,
+  'k:ctrl,alt': alias.full,
+  'l:ctrl,alt': alias.righthalf,
+  'm:ctrl,alt': alias.bottomleft,
+  ',:ctrl,alt': alias.bottomhalf,
+  '.:ctrl,alt': alias.bottomright,
 });
