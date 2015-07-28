@@ -67,11 +67,11 @@ alias = {
 S.bindAll({
   'u:ctrl,alt': alias.topleft,
   'i:ctrl,alt': alias.tophalf,
-  'o:ctrl,alt': alias.topright
+  'o:ctrl,alt': alias.topright,
   'j:ctrl,alt': alias.lefthalf,
   'k:ctrl,alt': alias.full,
   'l:ctrl,alt': alias.righthalf,
   'm:ctrl,alt': alias.bottomleft,
   ',:ctrl,alt': alias.bottomhalf,
-  '.:ctrl,alt': alias.bottomright,
+  '.:ctrl,alt': alias.bottomright
 });
