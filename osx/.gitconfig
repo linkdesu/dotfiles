@@ -21,6 +21,9 @@
     aa = add .
     ss = status
     cc = commit
+    bb = branch
+    lm = log --graph --pretty=format:'%h @%ci by %ce: %s %n' --after='1 month'
+    ls = log --graph --pretty=format:'%h @%ci by %ce: %s %n'
 [diff]
     tool = meld
 [merge]
@@ -29,7 +32,7 @@
     keepBackup = false
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
