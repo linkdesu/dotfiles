@@ -118,14 +118,13 @@ alias du='du -h'
 
 alias composer='composer -vvv --profile'
 alias sshxl='sshpass -f "$HOME/Documents/其他/工作资料/passwd" ssh xieaolin@essh.sandai.net'
-alias pac_gen='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20000; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
+alias pac_gen='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20001; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias pac_edit='subl "$HOME/Documents/Config/proxy/linksrule.txt"'
-alias ping_linode='ping 106.185.25.247'
-alias ping_do='ping 45.55.15.226'
 alias jekyll_on='jekyll serve --watch --drafts'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias php_xdebug="php -d xdebug.profiler_enable=1"
 alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
+alias ping_ss="ping 133.130.91.156"
 
 # ============== SUFFIX 2 EDITOR ==============
 

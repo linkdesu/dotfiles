@@ -40,6 +40,8 @@ data/
 *.vi
 *~
 *.bak
+.vagrant/
+*.box
 
 # python
 *.pyc

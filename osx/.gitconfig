@@ -1,10 +1,10 @@
 [user]
-    name = Link
-    email = xieaolin@foxmail.com
+	name = 谢奥林
+	email = xieaolin@foxmail.com
 [core]
     symlinks = false
     autocrlf = input
-    excludesfile = /Users/xieaolin/.gitignore_global
+	excludesfile = /Users/xieaolin/.gitignore_global
     paper = less -r
     quotepath = false
 [push]
@@ -31,8 +31,8 @@
 [mergetool]
     keepBackup = false
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
-	path =
+	cmd = " "
+	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = " "
 	trustExitCode = true
