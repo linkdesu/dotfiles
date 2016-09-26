@@ -79,8 +79,8 @@ case $os in
     "Linux")
     ;;
     "Darwin")
-        # Homebrew php 5.5
-        export PATH="$PATH:$(brew --prefix homebrew/php/php55)/bin"
+        # Homebrew
+        export PATH=/usr/local/sbin:$PATH
         # Ruby Gemts
         export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
         # Go
@@ -97,13 +97,15 @@ case $os in
     "Linux")
     ;;
     "Darwin")
-        # Sublime Text
-        export EDITOR='subl'
-
+        # Use homebrew vim
+        export EDITOR='vim'
+        vim=/usr/local/bin/vim
         # Set CLICOLOR if you want Ansi Colors in iTerm2
         export CLICOLOR=1
         # Set colors to match iTerm2 Terminal Colors
         export TERM=xterm-256color
+        # Iterm shell integeration
+        source ${HOME}/.iterm2_shell_integration.zsh
 
         alias boot2docker_env='eval "$(boot2docker shellinit)"'
     ;;
@@ -111,20 +113,18 @@ case $os in
     ;;
 esac
 
-alias grep='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
+alias grep_c='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
 alias vi='vim'
 alias df='df -h'
 alias du='du -h'
 
-alias composer='composer -vvv --profile'
-alias sshxl='sshpass -f "$HOME/Documents/其他/工作资料/passwd" ssh xieaolin@essh.sandai.net'
-alias pac_gen='gfwlist2pac -i "$HOME/Documents/Config/proxy/gfwlist.txt" -f "$HOME/bin/link.pac" -p "SOCKS5 127.0.0.1:20000; SOCKS 127.0.0.1:20001; DIRECT" --user-rule "$HOME/Documents/Config/proxy/linksrule.txt"'
-alias pac_edit='subl "$HOME/Documents/Config/proxy/linksrule.txt"'
-alias jekyll_on='jekyll serve --watch --drafts'
+#alias composer='composer -vvv --profile'
+alias pac_edit='atom "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias php_xdebug="php -d xdebug.profiler_enable=1"
 alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
-alias ping_ss="ping 133.130.91.156"
+alias http_server="python -m SimpleHTTPServer 8080"
+alias http_serverx="python -m SimpleHTTPServer"
 
 # ============== SUFFIX 2 EDITOR ==============
 
@@ -137,3 +137,4 @@ alias -s gz='tar -xzf'
 alias -s tgz='tar -xzf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjf'
+

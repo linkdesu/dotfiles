@@ -5,11 +5,13 @@ node_modules/
 # Editor folders
 .svn/
 .idea/
+.vscode/
+.phpstorm.meta.php
+_ide_helper.php
 .project/
 .settings/
 nbproject/
 xcuserdata/
-build/
 ._*
 .cache
 .tmproj
