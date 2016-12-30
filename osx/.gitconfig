@@ -31,10 +31,14 @@
 [mergetool]
     keepBackup = false
 [difftool "sourcetree"]
-	cmd = " "
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = " "
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/xieaolin/.stCommitMsg
+[http]
+	# proxy = http://127.0.0.1:8888
+[https]
+	# proxy = https://127.0.0.1:8888

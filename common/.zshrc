@@ -70,17 +70,18 @@ export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 
 # ============== PATH ==============
-# home
-export PATH=$PATH:~/bin
-# composer
-export PATH=$PATH:~/.composer/vendor/bin
 
 case $os in
     "Linux")
     ;;
     "Darwin")
         # Homebrew
-        export PATH=/usr/local/sbin:$PATH
+        # 注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
+        export PATH=/usr/local/bin:/usr/local/sbin:`yarn global bin`:$PATH
+        # home
+        export PATH=$PATH:~/bin
+        # composer
+        export PATH=$PATH:~/.composer/vendor/bin
         # Ruby Gemts
         export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
         # Go
@@ -97,6 +98,7 @@ case $os in
     "Linux")
     ;;
     "Darwin")
+        http_proxy_url='http://127.0.0.1:8888'
         # Use homebrew vim
         export EDITOR='vim'
         vim=/usr/local/bin/vim
@@ -107,11 +109,35 @@ case $os in
         # Iterm shell integeration
         source ${HOME}/.iterm2_shell_integration.zsh
 
+        #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
         alias boot2docker_env='eval "$(boot2docker shellinit)"'
     ;;
     "Cygwin")
     ;;
 esac
+
+# where proxy
+proxy () {
+    action=$1
+
+    case $action in
+        "on")
+        export http_proxy=$http_proxy_url
+        export https_proxy=$http_proxy_url
+        echo "HTTP Proxy On : "$http_proxy_url
+        ;;
+        "off")
+        unset http_proxy
+        unset https_proxy
+        echo "HTTP Proxy Off"
+        ;;
+        *)
+        echo "http_proxy="$http_proxy
+        echo "http_proxy="$https_proxy
+        ;;
+    esac
+}
 
 alias grep_c='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
 alias vi='vim'
@@ -119,12 +145,15 @@ alias df='df -h'
 alias du='du -h'
 
 #alias composer='composer -vvv --profile'
-alias pac_edit='atom "$HOME/Documents/Config/proxy/linksrule.txt"'
+alias pac_edit='open "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias php_xdebug="php -d xdebug.profiler_enable=1"
+alias phpd="php -d xdebug.profiler_enable=1"
+alias phps="php -S 0.0.0.0:8080"
+alias php_ini="atom /usr/local/etc/php/"
 alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
 alias http_server="python -m SimpleHTTPServer 8080"
 alias http_serverx="python -m SimpleHTTPServer"
+alias rsync="rsync -chavzP"
 
 # ============== SUFFIX 2 EDITOR ==============
 
@@ -137,4 +166,3 @@ alias -s gz='tar -xzf'
 alias -s tgz='tar -xzf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjf'
-

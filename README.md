@@ -20,17 +20,7 @@ $ cd autojump-release-v22.2.4
 $ ./install.py # 这里千万不要sodu，如果装错了可以使用 uninstall.py 脚本回滚
 ```
 
-## Useful Alias
-
-```
-alias composer='composer -vvv --profile'
-alias jekyll_on='jekyll serve --watch --drafts'
-alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias php_xdebug="php -d xdebug.profiler_enable=1"
-```
-
 ## Dependencies
 
 * https://github.com/joelthelion/autojump
 * http://vim.spf13.com/
-

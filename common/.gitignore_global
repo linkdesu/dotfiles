@@ -20,6 +20,7 @@ xcuserdata/
 *.sublime-workspace
 .classpath
 .tags
+jsconfig.json
 
 # OS
 .DS_Store
