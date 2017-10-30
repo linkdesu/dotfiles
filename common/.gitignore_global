@@ -29,7 +29,6 @@ Thumbs.db
 *.swp
 
 # Other
-data/
 *.ico
 *.log
 *.diff

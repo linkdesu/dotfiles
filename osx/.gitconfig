@@ -1,5 +1,5 @@
 [user]
-	name = 谢奥林
+	name = Link
 	email = xieaolin@foxmail.com
 [core]
     symlinks = false
@@ -29,7 +29,7 @@
 [merge]
     tool = meld
 [mergetool]
-    keepBackup = false
+	keepBackup = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

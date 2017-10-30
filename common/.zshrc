@@ -85,7 +85,14 @@ case $os in
         # Ruby Gemts
         export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
         # Go
-        export GOPATH=$HOME/vagrant_go/go
+        export GOPATH=$HOME/Documents/go
+        export PATH=$PATH:$GOPATH/bin
+        # Electron 加速下载
+        export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+        # Java
+        export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
+        # Ansible
+        export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
     ;;
     "Cygwin")
     ;;
@@ -98,7 +105,7 @@ case $os in
     "Linux")
     ;;
     "Darwin")
-        http_proxy_url='http://127.0.0.1:8888'
+        http_proxy_url='127.0.0.1:1087'
         # Use homebrew vim
         export EDITOR='vim'
         vim=/usr/local/bin/vim
@@ -109,7 +116,7 @@ case $os in
         # Iterm shell integeration
         source ${HOME}/.iterm2_shell_integration.zsh
 
-        #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
 
         alias boot2docker_env='eval "$(boot2docker shellinit)"'
     ;;
@@ -117,7 +124,7 @@ case $os in
     ;;
 esac
 
-# where proxy
+# Switch http proxy to specific url
 proxy () {
     action=$1
 
@@ -139,10 +146,33 @@ proxy () {
     esac
 }
 
+# Backup all vscode configs
+backup_vscode () {
+    from_dir="$HOME/Library/Application Support/Code/User/"
+    to_dir="$HOME/Documents/Config/vscode/"
+    cp ${from_dir}keybindings.json ${to_dir}
+    cp ${from_dir}settings.json ${to_dir}
+    cp -R ${from_dir}snippets/ ${to_dir}snippets
+    echo 'Backup vscode config files successfully!'
+}
+
+# Backup all atom configs
+backup_atom () {
+    from_dir="$HOME/.atom/"
+    to_dir="$HOME/Documents/Config/atom/"
+    cp ${from_dir}config.cson ${to_dir}
+    cp ${from_dir}keymap.cson ${to_dir}
+    cp ${from_dir}snippets.cson ${to_dir}
+    cp ${from_dir}init.coffee ${to_dir}
+    cp ${from_dir}styles.less ${to_dir}
+    echo 'Backup atom config files successfully!'
+}
+
 alias grep_c='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
 alias vi='vim'
 alias df='df -h'
 alias du='du -h'
+alias l='ls'
 
 #alias composer='composer -vvv --profile'
 alias pac_edit='open "$HOME/Documents/Config/proxy/linksrule.txt"'
@@ -154,6 +184,7 @@ alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
 alias http_server="python -m SimpleHTTPServer 8080"
 alias http_serverx="python -m SimpleHTTPServer"
 alias rsync="rsync -chavzP"
+alias npmls="npm ls -g --depth=0"
 
 # ============== SUFFIX 2 EDITOR ==============
 
