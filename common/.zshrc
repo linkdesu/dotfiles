@@ -69,43 +69,14 @@ source $ZSH/oh-my-zsh.sh
 export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 
-# ============== PATH ==============
+# ============== ENV ==============
 
 case $os in
     "Linux")
     ;;
     "Darwin")
-        # Homebrew
-        # 注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
-        export PATH=/usr/local/bin:/usr/local/sbin:`yarn global bin`:$PATH
-        # home
-        export PATH=$PATH:~/bin
-        # composer
-        export PATH=$PATH:~/.composer/vendor/bin
-        # Ruby Gemts
-        export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
-        # Go
-        export GOPATH=$HOME/Documents/go
-        export PATH=$PATH:$GOPATH/bin
-        # Electron 加速下载
-        export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
-        # Java
-        export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
-        # Ansible
-        export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
-    ;;
-    "Cygwin")
-    ;;
-esac
+        http_proxy_url=http://127.0.0.1:1087
 
-
-# ============== OTHER ==============
-
-case $os in
-    "Linux")
-    ;;
-    "Darwin")
-        http_proxy_url='127.0.0.1:1087'
         # Use homebrew vim
         export EDITOR='vim'
         vim=/usr/local/bin/vim
@@ -116,9 +87,27 @@ case $os in
         # Iterm shell integeration
         source ${HOME}/.iterm2_shell_integration.zsh
 
-        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
+        # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
+        export PATH=/usr/local/bin:/usr/local/sbin:`yarn global bin`:$PATH
+        # home
+        export PATH=$PATH:~/bin
+        # composer
+        export PATH=$PATH:~/.composer/vendor/bin
+        # Ruby Gemts
+        export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
+        # Go
+        export GOPATH=$HOME/Documents/go
+        export PATH=$PATH:$GOPATH/bin
+        # Python3 bin
+        export PATH=$PATH:~/Library/Python/3.6/bin
+        # Java
+        export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
+        # Ansible
+        export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
 
-        alias boot2docker_env='eval "$(boot2docker shellinit)"'
+        # 加速
+        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
+        export ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
     ;;
     "Cygwin")
     ;;
