@@ -7,23 +7,26 @@ fi
 
 os=`uname`
 home_dir=$HOME
-common_config_dir=$PWD/common
+work_dir=$PWD
+common_config_dir=$work_dir/common
 case $os in
     "Linux")
-        os_config_dir=$PWD/linux
+        os_config_dir=$work_dir/linux
     ;;
     "Darwin")
-        os_config_dir=$PWD/osx
+        os_config_dir=$work_dir/osx
     ;;
     "Cygwin")
-        os_config_dir=$PWD/cygwin
+        os_config_dir=$work_dir/cygwin
     ;;
 esac
 
-echo "OS : $os"
-echo "HOME : $home_dir"
-echo "common_config_dir : $common_config_dir"
-echo "os_config_dir : $os_config_dir"
+echo "OS: $os"
+echo "HOME: $home_dir"
+echo "WORKDIR: $work_dir"
+echo "common_config_dir: $common_config_dir"
+echo "os_config_dir: $os_config_dir"
+echo "\n"
 
 function ln_dotfile() {
     source_file=$1

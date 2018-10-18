@@ -1,0 +1,58 @@
+{
+  "title": "Links Rule",
+  "rules": [
+    {
+      "description": "Change caps_lock key to command+control+option+shift+= for switch language.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Change right_alt key to command+control+option+shift.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_alt",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

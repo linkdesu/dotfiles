@@ -6,6 +6,7 @@ node_modules/
 .svn/
 .idea/
 .vscode/
+.history/
 .phpstorm.meta.php
 _ide_helper.php
 .project/

@@ -88,7 +88,7 @@ case $os in
         source ${HOME}/.iterm2_shell_integration.zsh
 
         # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
-        export PATH=/usr/local/bin:/usr/local/sbin:`yarn global bin`:$PATH
+        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
         # home
         export PATH=$PATH:~/bin
         # composer
@@ -104,9 +104,11 @@ case $os in
         export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
         # Ansible
         export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
+        # Flutter
+        export PATH=$PATH:~/bin/flutter/bin
 
         # 加速
-        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
+        # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
         export ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
     ;;
     "Cygwin")
@@ -142,6 +144,7 @@ backup_vscode () {
     cp ${from_dir}keybindings.json ${to_dir}
     cp ${from_dir}settings.json ${to_dir}
     cp -R ${from_dir}snippets/ ${to_dir}snippets
+    code --list-extensions > ${to_dir}plugins_list.txt
     echo 'Backup vscode config files successfully!'
 }
 
@@ -164,24 +167,27 @@ alias du='du -h'
 alias l='ls'
 
 #alias composer='composer -vvv --profile'
-alias pac_edit='open "$HOME/Documents/Config/proxy/linksrule.txt"'
+alias pac_edit='code "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias phpd="php -d xdebug.profiler_enable=1"
-alias phps="php -S 0.0.0.0:8080"
-alias php_ini="atom /usr/local/etc/php/"
 alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
-alias http_server="python -m SimpleHTTPServer 8080"
-alias http_serverx="python -m SimpleHTTPServer"
+alias http_server="python3 -m SimpleHTTPServer 8080"
+alias http_serverx="python3 -m SimpleHTTPServer"
 alias rsync="rsync -chavzP"
 alias npmls="npm ls -g --depth=0"
+alias docker_up="docker-compose up -d mysql nginx php-fpm postgres redis workspace snowflake grafana prometheus"
+alias docker_bash="docker-compose exec workspace bash"
+alias d="docker"
+alias dc="docker-compose"
+alias ip="curl http://members.3322.org/dyndns/getip"
 
 # ============== SUFFIX 2 EDITOR ==============
 
-alias -s html=subl
-alias -s json=subl
-alias -s conf=subl
-alias -s md=subl
-alias -s ini=subl
+alias -s txt=code
+alias -s html=code
+alias -s json=code
+alias -s conf=code
+alias -s md=code
+alias -s ini=code
 alias -s gz='tar -xzf'
 alias -s tgz='tar -xzf'
 alias -s zip='unzip'
