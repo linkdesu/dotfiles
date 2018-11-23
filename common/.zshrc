@@ -140,7 +140,7 @@ proxy () {
 # Backup all vscode configs
 backup_vscode () {
     from_dir="$HOME/Library/Application Support/Code/User/"
-    to_dir="$HOME/Documents/Config/vscode/"
+    to_dir="$HOME/Documents/config/vscode/"
     cp ${from_dir}keybindings.json ${to_dir}
     cp ${from_dir}settings.json ${to_dir}
     cp -R ${from_dir}snippets/ ${to_dir}snippets
@@ -151,7 +151,7 @@ backup_vscode () {
 # Backup all atom configs
 backup_atom () {
     from_dir="$HOME/.atom/"
-    to_dir="$HOME/Documents/Config/atom/"
+    to_dir="$HOME/Documents/config/atom/"
     cp ${from_dir}config.cson ${to_dir}
     cp ${from_dir}keymap.cson ${to_dir}
     cp ${from_dir}snippets.cson ${to_dir}
