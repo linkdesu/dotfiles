@@ -106,6 +106,10 @@ case $os in
         export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
         # Flutter
         export PATH=$PATH:~/bin/flutter/bin
+        # nvm
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
         # 加速
         # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
@@ -114,6 +118,31 @@ case $os in
     "Cygwin")
     ;;
 esac
+
+# 如果启用了 nvm ，进入目录时检查 .nvmrc 并尝试载入
+if [[ -v NVM_DIR ]];then
+    autoload -U add-zsh-hook
+    load-nvmrc() {
+        local node_version="$(nvm version)"
+        local nvmrc_path="$(nvm_find_nvmrc)"
+
+        echo "Current node version: ${node_version}"
+
+        if [ -n "$nvmrc_path" ]; then
+            local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+            if [ "$nvmrc_node_version" = "N/A" ]; then
+                nvm install
+            elif [ "$nvmrc_node_version" != "$node_version" ]; then
+                nvm use
+            fi
+        elif [ "$node_version" != "$(nvm version default)" ]; then
+            echo "Reverting to nvm default version"
+            nvm use default
+        fi
+    }
+    add-zsh-hook chpwd load-nvmrc
+    load-nvmrc
+fi
 
 # Switch http proxy to specific url
 proxy () {
@@ -148,18 +177,6 @@ backup_vscode () {
     echo 'Backup vscode config files successfully!'
 }
 
-# Backup all atom configs
-backup_atom () {
-    from_dir="$HOME/.atom/"
-    to_dir="$HOME/Documents/config/atom/"
-    cp ${from_dir}config.cson ${to_dir}
-    cp ${from_dir}keymap.cson ${to_dir}
-    cp ${from_dir}snippets.cson ${to_dir}
-    cp ${from_dir}init.coffee ${to_dir}
-    cp ${from_dir}styles.less ${to_dir}
-    echo 'Backup atom config files successfully!'
-}
-
 alias grep_c='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
 alias vi='vim'
 alias df='df -h'
@@ -173,7 +190,8 @@ alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
 alias http_server="python3 -m SimpleHTTPServer 8080"
 alias http_serverx="python3 -m SimpleHTTPServer"
 alias rsync="rsync -chavzP"
-alias npmls="npm ls -g --depth=0"
+alias npm-ls="npm ls --depth=0"
+alias nvm-ls="nvm ls-remote --lts | grep Latest"
 alias docker_up="docker-compose up -d mysql nginx php-fpm postgres redis workspace snowflake grafana prometheus"
 alias docker_bash="docker-compose exec workspace bash"
 alias d="docker"
@@ -192,3 +210,9 @@ alias -s gz='tar -xzf'
 alias -s tgz='tar -xzf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjf'
+
+[[ -s "/Users/xieaolin/.gvm/scripts/gvm" ]] && source "/Users/xieaolin/.gvm/scripts/gvm"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/xieaolin/Documents/blockchain/ganache/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/xieaolin/Documents/blockchain/ganache/node_modules/tabtab/.completions/electron-forge.zsh

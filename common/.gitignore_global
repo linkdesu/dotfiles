@@ -22,29 +22,13 @@ xcuserdata/
 .classpath
 .tags
 jsconfig.json
+.nvmrc
 
 # OS
 .DS_Store
 Thumbs.db
 .Trashes
 *.swp
-
-# Other
-*.ico
-*.log
-*.diff
-*.err
-*.orig
-*.log
-*.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
-*.bak
-.vagrant/
-*.box
 
 # python
 *.pyc
@@ -75,3 +59,18 @@ Thumbs.db
 *.i*86
 *.x86_64
 *.hex
+
+# Other
+*.ico
+*.log
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.bak

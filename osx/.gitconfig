@@ -1,6 +1,6 @@
 [user]
 	name = Link
-	email = xieaolin@foxmail.com
+	email = xie.al@qq.com
 [core]
     symlinks = false
     autocrlf = input
@@ -27,21 +27,15 @@
 [diff]
     tool = meld
 [merge]
-    tool = meld
+	tool = meld
 [mergetool]
 	keepBackup = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/xieaolin/.stCommitMsg
-[http]
-	# proxy = http://127.0.0.1:8888
-[https]
-	# proxy = https://127.0.0.1:8888
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
