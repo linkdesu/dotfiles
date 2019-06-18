@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLReg>
+  <Key Name="HKEY_CURRENT_USER">
+    <Key Name="Software">
+      <Key Name="Cheat Engine">
+        <Key Name="Window Positions">
+          <Value Name="AdvancedOptions Position" Type="3">7F010000F30100007402000029010000</Value>
+          <Value Name="MemoryBrowser Position" Type="3">E001000097030000D2020000E0010000500000008C000000C8000000640000002C010000D2000000</Value>
+          <Value Name="MainForm Position" Type="3">DE010000220300002A0400001102000028000000A0000000550000003C00000010270000600100005D000000</Value>
+        </Key>
+      </Key>
+    </Key>
+  </Key>
+</XMLReg>

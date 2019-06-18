@@ -51,11 +51,11 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 case $os in
     "Linux")
-        plugins=(git autojump)
+        plugins=(git autojump z pyenv pip npm yarn nvm sudo redis-cli)
         [[ -s /home/vagrant/.autojump/etc/profile.d/autojump.sh ]] && source /home/vagrant/.autojump/etc/profile.d/autojump.sh
     ;;
     "Darwin")
-        plugins=(git brew autojump osx)
+        plugins=(git autojump z pyenv pip npm yarn nvm sudo redis-cli brew osx)
     ;;
     "Cygwin")
     ;;
@@ -108,8 +108,7 @@ case $os in
         export PATH=$PATH:~/bin/flutter/bin
         # nvm
         export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
         # 加速
         # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
@@ -126,18 +125,11 @@ if [[ -v NVM_DIR ]];then
         local node_version="$(nvm version)"
         local nvmrc_path="$(nvm_find_nvmrc)"
 
-        echo "Current node version: ${node_version}"
-
         if [ -n "$nvmrc_path" ]; then
             local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-            if [ "$nvmrc_node_version" = "N/A" ]; then
-                nvm install
-            elif [ "$nvmrc_node_version" != "$node_version" ]; then
+            if [ "$nvmrc_node_version" != "$node_version" ]; then
                 nvm use
             fi
-        elif [ "$node_version" != "$(nvm version default)" ]; then
-            echo "Reverting to nvm default version"
-            nvm use default
         fi
     }
     add-zsh-hook chpwd load-nvmrc
@@ -183,7 +175,6 @@ alias df='df -h'
 alias du='du -h'
 alias l='ls'
 
-#alias composer='composer -vvv --profile'
 alias pac_edit='code "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
@@ -197,6 +188,7 @@ alias docker_bash="docker-compose exec workspace bash"
 alias d="docker"
 alias dc="docker-compose"
 alias ip="curl http://members.3322.org/dyndns/getip"
+alias ping_proxy='sudo nping --tcp -p 22374 hk-1b.mitsuha-node.com hk-2.mitsuha-node.com hk-19.mitsuha-node.com hk-4.mitsuha-node.com hk-21.mitsuha-node.com hk-22.mitsuha-node.com hk-10.mitsuha-node.com hk-25.mitsuha-node.com hk-26.mitsuha-node.com hk-27.mitsuha-node.com'
 
 # ============== SUFFIX 2 EDITOR ==============
 
