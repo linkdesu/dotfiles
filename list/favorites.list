@@ -1,22 +1,27 @@
 # Favorites
-DOMAIN-SUFFIX,vgtime.com,DIRECT
-DOMAIN-SUFFIX,bilibili.tv,DIRECT
-DOMAIN-SUFFIX,bilibili.com,DIRECT
-DOMAIN-SUFFIX,acfun.tv,DIRECT
-DOMAIN-SUFFIX,zhangxinxu.com,DIRECT
-DOMAIN-SUFFIX,juejin.im,DIRECT
-DOMAIN-SUFFIX,ruanyifeng.com,DIRECT
-DOMAIN-SUFFIX,liaoxuefeng.com,DIRECT
-DOMAIN-SUFFIX,sdifen.com,DIRECT
+DOMAIN-SUFFIX,vgtime.com
+DOMAIN-SUFFIX,bilibili.tv
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-SUFFIX,acfun.tv
+DOMAIN-SUFFIX,zhangxinxu.com
+DOMAIN-SUFFIX,juejin.im
+DOMAIN-SUFFIX,ruanyifeng.com
+DOMAIN-SUFFIX,liaoxuefeng.com
+DOMAIN-SUFFIX,sdifen.com
 
 # Development RULES
-DOMAIN-SUFFIX,eospark.com,DIRECT
-DOMAIN-SUFFIX,unpkg.com,DIRECT
-DOMAIN-SUFFIX,oschina.net,DIRECT
-DOMAIN-SUFFIX,lanhuapp.com,DIRECT
-DOMAIN-SUFFIX,tower.im,DIRECT
-DOMAIN-SUFFIX,teambition.com,DIRECT
-DOMAIN-SUFFIX,coding.net,DIRECT
-DOMAIN-SUFFIX,kujiale.com,DIRECT
-DOMAIN-SUFFIX,mokahr.com,DIRECT
-DOMAIN-SUFFIX,jestjs.io,DIRECT
+DOMAIN-SUFFIX,eospark.com
+DOMAIN-SUFFIX,unpkg.com
+DOMAIN-SUFFIX,oschina.net
+DOMAIN-SUFFIX,lanhuapp.com
+DOMAIN-SUFFIX,tower.im
+DOMAIN-SUFFIX,teambition.com
+DOMAIN-SUFFIX,coding.net
+DOMAIN-SUFFIX,kujiale.com
+DOMAIN-SUFFIX,mokahr.com
+DOMAIN-SUFFIX,jestjs.io
+
+# Other
+DOMAIN-SUFFIX,ctfile.com
+DOMAIN-SUFFIX,solidot.org
+DOMAIN-SUFFIX,manmanbuy.com
