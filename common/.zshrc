@@ -52,7 +52,6 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 case $os in
     "Linux")
         plugins=(git autojump z pyenv pip npm yarn nvm sudo redis-cli)
-        [[ -s /home/vagrant/.autojump/etc/profile.d/autojump.sh ]] && source /home/vagrant/.autojump/etc/profile.d/autojump.sh
     ;;
     "Darwin")
         plugins=(git autojump z pyenv pip npm yarn nvm sudo redis-cli brew osx)
@@ -61,13 +60,12 @@ case $os in
     ;;
 esac
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
+
 
 # ============== ENV ==============
 
@@ -75,8 +73,6 @@ case $os in
     "Linux")
     ;;
     "Darwin")
-        http_proxy_url=http://127.0.0.1:1087
-
         # Use homebrew vim
         export EDITOR='vim'
         vim=/usr/local/bin/vim
@@ -87,39 +83,43 @@ case $os in
         # Iterm shell integeration
         source ${HOME}/.iterm2_shell_integration.zsh
 
-        # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
-        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
         # home
-        export PATH=$PATH:~/bin
-        # composer
-        export PATH=$PATH:~/.composer/vendor/bin
-        # Ruby Gemts
-        export PATH=$PATH:/Library/Ruby/Gems/2.0.0/gems
+        export PATH=~/bin:$PATH
+        # Ruby
+        # /usr/local/lib/ruby/gems/*/bin 这个路径可以通过 gem environment 的 EXECUTABLE DIRECTORY 发现
+        export PATH=/usr/local/lib/ruby/gems/2.6.0/bin:$PATH
+        export PATH=/usr/local/opt/ruby/bin:$PATH
         # Go
-        export GOPATH=$HOME/Documents/go
-        export PATH=$PATH:$GOPATH/bin
-        # Python3 bin
-        export PATH=$PATH:~/Library/Python/3.6/bin
+        export PATH=$HOME/Documents/go/bin:$PATH
         # Java
+        # 因为系统启用了 IPv6 ，所以这里需要告知 java 优先使用 IPv4
         export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
         # Ansible
         export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
         # Flutter
-        export PATH=$PATH:~/bin/flutter/bin
+        export PATH=~/bin/flutter/bin:$PATH
         # nvm
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-        # 加速
-        # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottlesk
-        export ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
+        # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
+        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
     ;;
     "Cygwin")
     ;;
 esac
 
+
+# ============== APP ==============
+
+# acme.sh
+if [[ -d $HOME/.acme.sh ]];then
+    echo "Init acme"
+    . "$HOME/.acme.sh/acme.sh.env"
+fi
+
 # 如果启用了 nvm ，进入目录时检查 .nvmrc 并尝试载入
-if [[ -v NVM_DIR ]];then
+if [[ -d $NVM_DIR ]];then
+    echo "Init nvm"
     autoload -U add-zsh-hook
     load-nvmrc() {
         local node_version="$(nvm version)"
@@ -139,6 +139,7 @@ fi
 # Switch http proxy to specific url
 proxy () {
     action=$1
+    http_proxy_url=$2
 
     case $action in
         "on")
@@ -169,26 +170,28 @@ backup_vscode () {
     echo 'Backup vscode config files successfully!'
 }
 
-alias grep_c='grep -n --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn,.idea}'
+
+# ============== ALIAS ==============
+
 alias vi='vim'
 alias df='df -h'
-alias du='du -h'
-alias l='ls'
+alias du='ncdu'
+alias l='exa'
+alias ll='exa -l --group-directories-first --time-style iso'
+alias lt='exa -lT --group-directories-first --time-style iso'
 
-alias pac_edit='code "$HOME/Documents/Config/proxy/linksrule.txt"'
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias privoxy_on="privoxy /usr/local/etc/privoxy/config"
-alias http_server="python3 -m SimpleHTTPServer 8080"
-alias http_serverx="python3 -m SimpleHTTPServer"
 alias rsync="rsync -chavzP"
 alias npm-ls="npm ls --depth=0"
 alias nvm-ls="nvm ls-remote --lts | grep Latest"
-alias docker_up="docker-compose up -d mysql nginx php-fpm postgres redis workspace snowflake grafana prometheus"
-alias docker_bash="docker-compose exec workspace bash"
 alias d="docker"
 alias dc="docker-compose"
 alias ip="curl http://members.3322.org/dyndns/getip"
-alias ping_proxy='sudo nping --tcp -p 22374 hk-1b.mitsuha-node.com hk-2.mitsuha-node.com hk-19.mitsuha-node.com hk-4.mitsuha-node.com hk-21.mitsuha-node.com hk-22.mitsuha-node.com hk-10.mitsuha-node.com hk-25.mitsuha-node.com hk-26.mitsuha-node.com hk-27.mitsuha-node.com'
+alias ping_proxy='sudo nping --tcp -p 5664 cn3.vxtrans.link'
+
+alias frp-on="frpc -c ~/Documents/config/frp/frpc.ini"
+alias frp-reload="frpc reload -c ~/Documents/config/frp/frpc.ini"
+alias frp-workstation="frpc -c ~/Documents/config/frp/frpc.workstation.ini"
 
 # ============== SUFFIX 2 EDITOR ==============
 
@@ -202,9 +205,3 @@ alias -s gz='tar -xzf'
 alias -s tgz='tar -xzf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjf'
-
-[[ -s "/Users/xieaolin/.gvm/scripts/gvm" ]] && source "/Users/xieaolin/.gvm/scripts/gvm"
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/xieaolin/Documents/blockchain/ganache/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/xieaolin/Documents/blockchain/ganache/node_modules/tabtab/.completions/electron-forge.zsh

@@ -32,7 +32,7 @@ function ln_dotfile() {
     source_file=$1
     target_file=$2
 
-    if [[ -e $target_file || -h $target_file ]]; then
+    if [[ -f $target_file || -h $target_file ]]; then
         echo "Remove old dotfile $target_file ...";
         rm $target_file
     elif [ -d $target_file ]; then

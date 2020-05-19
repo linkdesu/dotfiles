@@ -16,25 +16,129 @@
                 },
                 "rules": [
                     {
-                        "description": "Change right_command key to command+control+option+shift+= for switch language.",
+                        "description": "Enable simultaneous spacer+number keys for personal usage.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "1"
+                                        }
+                                    ]
                                 },
                                 "to": [
                                     {
-                                        "key_code": "equal_sign",
+                                        "key_code": "1",
                                         "modifiers": [
-                                            "left_command",
-                                            "left_control",
-                                            "left_option",
-                                            "left_shift"
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "2"
+                                        }
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "2",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "3"
+                                        }
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "3",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "4"
+                                        }
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "4",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "5"
+                                        }
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "5",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "spacebar"
+                                        },
+                                        {
+                                            "key_code": "6"
+                                        }
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "6",
+                                        "modifiers": [
+                                            "left_control"
                                         ]
                                     }
                                 ],
@@ -43,7 +147,7 @@
                         ]
                     },
                     {
-                        "description": "Change right_alt key to command+control+option+shift.",
+                        "description": "Change right_alt key to command+control+option+shift",
                         "manipulators": [
                             {
                                 "from": {
@@ -56,11 +160,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
+                                        "key_code": "left_option",
                                         "modifiers": [
                                             "left_command",
                                             "left_control",
-                                            "left_option"
+                                            "left_shift"
                                         ]
                                     }
                                 ],
@@ -82,11 +186,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
+                                        "key_code": "left_control",
                                         "modifiers": [
                                             "left_command",
-                                            "left_control",
-                                            "left_option"
+                                            "left_option",
+                                            "left_shift"
                                         ]
                                     }
                                 ],
@@ -119,18 +223,9 @@
                         "product_id": 50475,
                         "vendor_id": 1133
                     },
-                    "ignore": false,
+                    "ignore": true,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "caps_lock"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        }
-                    ]
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -143,16 +238,7 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "caps_lock"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        }
-                    ]
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -165,16 +251,7 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "caps_lock"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        }
-                    ]
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -198,8 +275,34 @@
                         "product_id": 594,
                         "vendor_id": 1452
                     },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 20777,
+                        "vendor_id": 1155
+                    },
                     "ignore": true,
-                    "manipulate_caps_lock_led": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 20777,
+                        "vendor_id": 1155
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": []
                 }
             ],
@@ -302,8 +405,19 @@
                 }
             ],
             "name": "Default profile",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [
+                {
+                    "from": {
+                        "key_code": "caps_lock"
+                    },
+                    "to": {
+                        "key_code": "left_command"
+                    }
+                },
                 {
                     "from": {
                         "key_code": "left_command"
@@ -311,10 +425,19 @@
                     "to": {
                         "key_code": "left_option"
                     }
+                },
+                {
+                    "from": {
+                        "key_code": "right_command"
+                    },
+                    "to": {
+                        "key_code": "caps_lock"
+                    }
                 }
             ],
             "virtual_hid_keyboard": {
-                "country_code": 0
+                "country_code": 0,
+                "mouse_key_xy_scale": 100
             }
         }
     ]

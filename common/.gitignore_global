@@ -4,8 +4,10 @@ node_modules/
 
 # Editor folders
 .svn/
-.idea/
 .vscode/
+.idea/*
+!.idea/vcs.xml
+!.idea/runConfigurations/
 .history/
 .phpstorm.meta.php
 _ide_helper.php
@@ -22,7 +24,6 @@ xcuserdata/
 .classpath
 .tags
 jsconfig.json
-.nvmrc
 
 # OS
 .DS_Store
@@ -74,3 +75,6 @@ Thumbs.db
 *.vi
 *~
 *.bak
+*.tmp.*
+tmp.*
+tmp

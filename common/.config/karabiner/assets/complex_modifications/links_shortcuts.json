@@ -2,33 +2,7 @@
   "title": "Links Rule",
   "rules": [
     {
-      "description": "Change right_command key to command+control+option+shift.",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "right_command",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_shift",
-              "modifiers": [
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Change right_alt key to command+control+option+shift+= for switch language.",
+      "description": "Change right_alt key to command+control+option+shift",
       "manipulators": [
         {
           "type": "basic",
@@ -42,11 +16,10 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
+              "key_code": "left_option",
               "modifiers": [
                 "left_command",
                 "left_control",
-                "left_option",
                 "left_shift"
               ]
             }
@@ -55,7 +28,7 @@
       ]
     },
     {
-      "description": "Change right_control key to command+control+option+shift+= for switch language.",
+      "description": "Change right_control key to command+control+option+shift.",
       "manipulators": [
         {
           "type": "basic",
@@ -69,10 +42,9 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
+              "key_code": "left_control",
               "modifiers": [
                 "left_command",
-                "left_control",
                 "left_option",
                 "left_shift"
               ]
