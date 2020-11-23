@@ -1,11 +1,11 @@
 # dotfiles
 
-我私人用来管理dotfiles仓库，你可以随意浏览，但不建议随意使用~~
+This is my personal dotfiles, feel free to copy and modify them to fit your own needs.
 
 ## Install
 
 ```shell
-$ git clone git@github.com:xieaolin/dotfiles.git
+$ git clone https://github.com/linkdesu/dotfiles.git
 $ ./dotfiles/sync.sh
 ```
 

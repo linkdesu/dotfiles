@@ -1,38 +1,23 @@
-# Package manager
-bower_components/
-node_modules/
-
-# Editor folders
-.svn/
-.vscode/
-.idea/*
-!.idea/vcs.xml
-!.idea/runConfigurations/
-.history/
-.phpstorm.meta.php
-_ide_helper.php
-.project/
-.settings/
-nbproject/
-xcuserdata/
-._*
-.cache
-.tmproj
-*.esproj
-*.sublime-project
-*.sublime-workspace
-.classpath
-.tags
-jsconfig.json
-
 # OS
 .DS_Store
 Thumbs.db
 .Trashes
 *.swp
 
+# Editor & IDE
+.vscode/
+.history/
+.idea/*
+!.idea/runConfigurations/
+
+# Package manager
+node_modules/
+
 # python
 *.pyc
+
+# Javascript
+.nvmrc
 
 # C
 ## Object files

@@ -1,0 +1,36 @@
+format = """$time$directory$git_branch\
+  $nodejs$python$rust\
+  $cmd_duration\
+  $line_break\
+  $character"""
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+[character]
+success_symbol = "[🧪](bold green) "
+error_symbol = "[💊](bold red) "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = "%Y-%m-%d %T%.3f"
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style) '
+truncate_to_repo = false
+
+[git_branch]
+format = "[$symbol $branch]($style) "
+symbol = ""
+truncation_length = 20
+truncation_symbol = "…"
+
+[nodejs]
+format = "via [$symbol$version]($style) "
+
+[cmd_duration]
+# 超过 500ms 的命令才显示其耗时多久
+min_time = 500
+format = '[\(🕛 $duration\)]($style)'
+style = "bold yellow"

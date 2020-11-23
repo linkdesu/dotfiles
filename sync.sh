@@ -28,7 +28,8 @@ echo "common_config_dir: $common_config_dir"
 echo "os_config_dir: $os_config_dir"
 echo "\n"
 
-function ln_dotfile() {
+# create symlink for file
+function ln_file() {
     source_file=$1
     target_file=$2
 
@@ -44,17 +45,40 @@ function ln_dotfile() {
     ln -s $source_file $target_file
 }
 
+# create symlinks for files in source_dir
+function ln_dir() {
+    source_dir=$1
+    target_dir=$2
+
+    files=$(ls -a $source_dir)
+    for file in $files; do
+        if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
+            ln_file $source_dir/$file $target_dir/$file
+        fi
+    done
+}
+
+# walk through $common_config_dir, create symlinks for everything in it
 files=$(ls -a $common_config_dir)
 for file in $files; do
     if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
-        ln_dotfile $common_config_dir/$file $home_dir/$file
+        if [[ -d $common_config_dir/$file ]]; then
+            ln_dir $common_config_dir/$file $home_dir/$file
+        else
+            ln_file $common_config_dir/$file $home_dir/$file
+        fi
     fi
 done
 
+# walk through $os_config_dir, create symlinks for everything in it
 files=$(ls -a $os_config_dir)
 for file in $files; do
     if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
-        ln_dotfile $os_config_dir/$file $home_dir/$file
+        if [[ -d $common_config_dir/$file ]]; then
+            ln_dir $os_config_dir/$file $home_dir/$file
+        else
+            ln_file $os_config_dir/$file $home_dir/$file
+        fi
     fi
 done
 
