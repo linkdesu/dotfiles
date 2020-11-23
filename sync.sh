@@ -50,6 +50,10 @@ function ln_dir() {
     source_dir=$1
     target_dir=$2
 
+    if [[ ! -d $target_dir ]]; then
+        mkdir -p $target_dir
+    fi
+
     files=$(ls -a $source_dir)
     for file in $files; do
         if [[ $file != "." && $file != ".." && $file != ".DS_Store" ]]; then
