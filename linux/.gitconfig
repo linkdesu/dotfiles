@@ -1,6 +1,6 @@
 [user]
     name = Link
-    email = xieaolin@foxmail.com
+    email = xieaolin@gmail.com
 [core]
     symlinks = false
     autocrlf = input
@@ -33,3 +33,5 @@
 [mergetool "sourcetree"]
 	cmd = DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
+[credential]
+	helper = cache --timeout=10800

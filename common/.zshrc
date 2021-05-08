@@ -52,10 +52,10 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 case $os in
     "Linux")
-        plugins=(z pyenv pip npm yarn sudo redis-cli)
+        plugins=(zsh-z pyenv pip npm yarn sudo redis-cli)
     ;;
     "Darwin")
-        plugins=(z pyenv pip npm yarn sudo redis-cli)
+        plugins=(zsh-z pyenv pip npm yarn sudo redis-cli)
     ;;
     "Cygwin")
     ;;
@@ -72,6 +72,13 @@ export LC_ALL=zh_CN.UTF-8
 
 case $os in
     "Linux")
+        export EDITOR='vim'
+        vim=/usr/bin/vim
+
+        # Rust
+        export PATH="$HOME/.cargo/bin:$PATH"
+        # home
+        export PATH=~/bin:$PATH
     ;;
     "Darwin")
         # Use homebrew vim
@@ -84,8 +91,6 @@ case $os in
         # Iterm shell integeration
         source ${HOME}/.iterm2_shell_integration.zsh
 
-        # home
-        export PATH=~/bin:$PATH
         # Rust
         export PATH="$HOME/.cargo/bin:$PATH"
         # Go
@@ -101,10 +106,23 @@ case $os in
         export ANSIBLE_ROLES_PATH=$HOME/Documents/ansible/roles
         # Flutter
         export PATH=~/bin/flutter/bin:$PATH
-        # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
-        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
         # Java
         export PATH=$PATH:/usr/local/opt/openjdk/bin
+        # GNU binutils
+        export PATH="/usr/local/opt/binutils/bin:$PATH"
+        export LDFLAGS="-L/usr/local/opt/binutils/lib"
+        export CPPFLAGS="-I/usr/local/opt/binutils/include"
+        # home
+        export PATH=~/bin:$PATH
+        # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
+        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+        # 现实当前可配置的 fd 范围，其中 kern.maxfilesperproc 一项就是 fd 的上弦
+        # sysctl -a | grep ^kern.max
+        # 设置当前 fd 可设置的最大值，但是不建议使用，因为每次重启会还原
+        # sudo launchctl limit maxfiles 65535 655350
+        # 下面的就是设置 fd ，注意不能超过上面的最大值
+        ulimit -n 20000
     ;;
     "Cygwin")
     ;;
@@ -190,8 +208,8 @@ alias vi='vim'
 alias df='df -h'
 alias du='ncdu'
 alias l='exa'
-alias ll='exa -lh --group-directories-first --time-style iso'
-alias lt='exa -lT -L 2 --group-directories-first --time-style iso'
+alias ll='exa -ghl --group-directories-first --time-style iso'
+alias lt='exa -glT -L 2 --group-directories-first --time-style iso'
 
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias rsync="rsync -chavzP"
@@ -199,7 +217,7 @@ alias npm-ls="npm ls --depth=0"
 alias nvm-ls="nvm ls-remote --lts | grep Latest"
 alias d="docker"
 alias dc="docker-compose"
-alias ip="curl http://members.3322.org/dyndns/getip"
+alias get-ip="curl http://members.3322.org/dyndns/getip"
 alias ping_proxy='sudo nping --tcp -p 5664 cn3.vxtrans.link'
 alias silent-update='sudo softwareupdate --ignore "macOS Catalina"'
 

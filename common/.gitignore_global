@@ -10,13 +10,12 @@ Thumbs.db
 .idea/*
 !.idea/runConfigurations/
 
-# Package manager
-node_modules/
-
 # python
+venv/
 *.pyc
 
 # Javascript
+node_modules/
 .nvmrc
 
 # C

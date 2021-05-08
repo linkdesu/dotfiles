@@ -1,4 +1,4 @@
-format = """$time$directory$git_branch\
+format = """$time$username$hostname$directory$git_branch\
   $nodejs$python$rust\
   $cmd_duration\
   $line_break\
@@ -16,6 +16,19 @@ disabled = false
 format = '[\[$time\]]($style) '
 time_format = "%Y-%m-%d %T%.3f"
 
+[username]
+style_user = "green bold"
+style_root = "purple bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "@ [$hostname](bold 111) "
+trim_at = ".local"
+disabled = false
+
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style) '
 truncate_to_repo = false
@@ -27,7 +40,11 @@ truncation_length = 20
 truncation_symbol = "…"
 
 [nodejs]
-format = "via [$symbol$version]($style) "
+format = "[$symbol $version]($style) "
+symbol = "⬢"
+
+[python]
+python_binary = ["python3"]
 
 [cmd_duration]
 # 超过 500ms 的命令才显示其耗时多久

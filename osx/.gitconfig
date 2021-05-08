@@ -1,6 +1,6 @@
 [user]
 	name = Link
-	email = xie.al@qq.com
+	email = xieaolin@gmail.com
 	signingkey = EDA90C66
 [core]
     symlinks = false
@@ -32,10 +32,10 @@
 [mergetool]
 	keepBackup = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustExitCode = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -44,6 +44,7 @@
 	required = true
 [commit]
 	gpgsign = true
+	template = /Users/xieaolin/.stCommitMsg
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg
 [credential]
