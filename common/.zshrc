@@ -42,6 +42,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ============== User configuration ==============
 
 os=`uname`
+arch=`uname -m`
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.oh-my-zsh-custom
@@ -75,10 +76,12 @@ case $os in
         export EDITOR='vim'
         vim=/usr/bin/vim
 
+        # Python
+        export PATH="$HOME/.local/bin:$PATH"
         # Rust
         export PATH="$HOME/.cargo/bin:$PATH"
         # home
-        export PATH=~/bin:$PATH
+        export PATH=~/App:$PATH
     ;;
     "Darwin")
         # Use homebrew vim
@@ -114,8 +117,12 @@ case $os in
         export CPPFLAGS="-I/usr/local/opt/binutils/include"
         # home
         export PATH=~/bin:$PATH
+        export PATH=~/App:$PATH
         # 主 Path 配置，注意 Homebrew 版 Node 的 Path 也在这里，并且根据版本号可能有变更
         export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+        if [[ $arch == "arm64" ]];then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
 
         # 现实当前可配置的 fd 范围，其中 kern.maxfilesperproc 一项就是 fd 的上弦
         # sysctl -a | grep ^kern.max
@@ -206,13 +213,12 @@ backup_vscode () {
 
 alias vi='vim'
 alias df='df -h'
-alias du='ncdu'
+alias du='gdu'
 alias l='exa'
 alias ll='exa -ghl --group-directories-first --time-style iso'
 alias lt='exa -glT -L 2 --group-directories-first --time-style iso'
 
 alias reload_zshrc=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias rsync="rsync -chavzP"
 alias npm-ls="npm ls --depth=0"
 alias nvm-ls="nvm ls-remote --lts | grep Latest"
 alias d="docker"

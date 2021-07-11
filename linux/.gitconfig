@@ -21,6 +21,9 @@
     aa = add .
     ss = status
     cc = commit
+    bb = branch
+    lm = log --graph --oneline --all  --after='1 month' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    ll = log --graph --oneline --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [diff]
     tool = meld
 [merge]
