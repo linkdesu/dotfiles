@@ -1,6 +1,7 @@
 [user]
     name = Link
     email = xieaolin@gmail.com
+	signingkey = 73D78CB3EDA90C66
 [core]
     symlinks = false
     autocrlf = input
@@ -15,7 +16,7 @@
     branch = auto
     interactive = true
 [branch]
-      autosetuprebase = always
+    autosetuprebase = always
 [alias]
     output = "!sh -c 'git archive -o ~/var/output.zip $1 $(git diff --name-only $2)' -"
     aa = add .
